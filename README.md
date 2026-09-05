@@ -143,6 +143,8 @@ streamlit run main.py
 
 Open your browser and navigate to `http://localhost:8501`.
 
+Or Access it live [Here](https://legal-ai-assistant-bj2hkv6hxweyshhvkkrjxm.streamlit.app/#legal-ai-assistant)
+
 ---
 
 ## 📖 How to Use

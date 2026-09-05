@@ -12,3 +12,8 @@ dependencies = [
     "streamlit>=1.63.0",
     "typing>=3.10.0.0",
 ]
+
+[tool.pyright]
+extraPaths = ["."]
+venvPath = "."
+venv = ".venv"

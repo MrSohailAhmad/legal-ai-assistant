@@ -12,20 +12,20 @@ st.title("⚖️ Legal AI Assistant")
 st.caption("Upload a contract. Get structured clause analysis and risk flags.")
 
 # Sidebar for API key configuration / overrides
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 if not api_key:
     try:
-        api_key = st.secrets.get("OPENAI_API_KEY")
+        api_key = st.secrets.get("GEMINI_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
     except Exception:
         pass
 
 with st.sidebar:
     st.header("⚙️ Configuration")
     user_api_key = st.text_input(
-        "OpenAI API Key",
+        "Gemini API Key",
         type="password",
         value=api_key or "",
-        help="Provide your OpenAI API key here or add it to Streamlit Secrets / .env",
+        help="Provide your Gemini API key here or add GEMINI_API_KEY to Streamlit Secrets / .env",
     )
     if user_api_key:
         api_key = user_api_key
@@ -35,8 +35,8 @@ uploaded = st.file_uploader("Upload contract (PDF)", type="pdf")
 if uploaded and st.button("Analyze"):
     if not api_key:
         st.error(
-            "⚠️ **OpenAI API Key is missing.**\n\n"
-            "Please enter your key in the sidebar, or configure `OPENAI_API_KEY` in your "
+            "⚠️ **Gemini API Key is missing.**\n\n"
+            "Please enter your key in the sidebar, or configure `GEMINI_API_KEY` in your "
             "`.env` file (locally) or in **Settings > Secrets** on Streamlit Cloud."
         )
         st.stop()
